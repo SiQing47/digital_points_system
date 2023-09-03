@@ -26,9 +26,11 @@ def point_transaction(request):
         if transaction_type == 'increase':
             user.balance += amount
         elif transaction_type == 'decrease':
+            if amount > user.balance:
+                return Response({'error': '使用者餘額不足'}, status=status.HTTP_400_BAD_REQUEST)
             user.balance -= amount
         else:
-            return Response({'error': 'transaction_type 錯誤'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'error': '參數 type 錯誤'}, status=status.HTTP_400_BAD_REQUEST)
 
         user.save()
 
