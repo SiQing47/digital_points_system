@@ -187,3 +187,11 @@ Example Request:
   - If the transaction type is not 'increase' or 'decrease'.
   - If the user balance is insufficient for a 'decrease' transaction.
 - **500 Internal Server Error**: If there is a server error while processing the request.
+
+
+## Unit Tests
+To run unit tests, you can use the following command:
+```
+python manage.py test
+```
+
