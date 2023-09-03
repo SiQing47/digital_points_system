@@ -6,10 +6,11 @@ from .models import Transaction, CustomUser
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
-        fields = '__all__'
+        fields = 'original_balance', 'source', 'transaction_type', \
+                 'amount', 'remaining_balance', 'description', 'timestamp'
 
 
-class UserPointsSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         # fields = '__all__'

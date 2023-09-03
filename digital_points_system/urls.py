@@ -18,16 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from .views import UserPointsListView, point_transaction
+from .views import UserDetailView, point_transaction, UserListView
 
 router = DefaultRouter()
-# router.register(r'give-points', GivePointsView, basename='give-points')
-# router.register(r'use-points', UsePointsView, basename='use-points')
 
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
-    path('api/users/', UserPointsListView.as_view(), name='user-points-list'),
-    path('api/give-poins/', point_transaction, name="give-points"),
-    path('api/use-poins/', point_transaction, name="use-points"),
+    path('api/users/', UserListView.as_view(), name='user-list'),
+    path('api/users/<str:id>/', UserDetailView.as_view(), name='user'),
+    path('api/give-points/', point_transaction, name="give-points"),
+    path('api/use-points/', point_transaction, name="use-points"),
 ]
